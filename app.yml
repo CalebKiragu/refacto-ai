@@ -1,0 +1,17 @@
+# GitHub App permissions
+permissions:
+  contents: read & write
+  pull-requests: write
+  metadata: read
+
+# Subscribe to events
+events:
+  - push
+  - pull_request
+  - repository
+
+# Add marketplace branding
+marketplace:
+  categories:
+    - documentation
+  pricing: free

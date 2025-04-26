@@ -1,0 +1,16 @@
+name: Scheduled Documentation Scan
+on:
+  schedule:
+    - cron: "0 0 * * 0" # Weekly at midnight Sunday
+  workflow_dispatch:
+
+jobs:
+  trigger-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger scan
+        run: |
+          curl -X POST ${{ secrets.APP_URL }}/api/scan \
+            -H "Authorization: Bearer ${{ secrets.APP_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d '{"repo": "${{ github.repository }}", "trigger": "scheduled"}'
